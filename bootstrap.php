@@ -14,8 +14,9 @@ $indexControllerData = array(
     'action'        => 'index',
     'namespace'     => $blockNamespace.'\Controller'
 );
-$router->add("/users", 	$indexControllerData);
-$router->add("/users/", $indexControllerData);
+$router->add("/users", 		$indexControllerData);
+$router->add("/users/", 	$indexControllerData);
+$router->add("/admin/", 	$indexControllerData);
 
 ////////////////////////////
 //  CLASSES
