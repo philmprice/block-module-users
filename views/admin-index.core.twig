@@ -1,0 +1,28 @@
+{% extends 'core/block-module-pages/admin.core.twig' %}
+
+{% block panelHeading %}
+	<div class='panel-heading'>
+		<h4>Pages</h4>
+	</div>
+{% endblock %}
+
+{% block panelBody %}
+{% endblock %}
+
+{% block table %}
+	<table class='table'>
+		<tr>
+			<th>Name</td>
+			<th></td>
+		</tr>
+		{% for page in pageArray %}
+			<tr>
+				<td>{{ page.title }}</td>
+				<td width=55>
+					<a href='update/{{ page.handle }}'><span class="glyphicon glyphicon-pencil"></span></a>
+					<a href='delete/{{ page.handle }}'><span class="glyphicon glyphicon-trash"></span></a>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

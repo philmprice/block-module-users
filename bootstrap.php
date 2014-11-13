@@ -34,6 +34,20 @@ $loaderDirArray[]   = '../../'.$blockFolder.'/models/';
 $loaderDirArray[]   = '../../'.$blockFolder.'/php/objects/';
 
 ////////////////////////////
-//  NAMESPACES
+//  AUTOLOAD NAMESPACES
 
 // $loaderNamespaceArray['BlockModule\Pages']	= "../../".$blockFolder."/php/objects/";
+
+////////////////////////////
+//  REFRESH
+if(SERVER == 'dev' && isset($_GET['refreshAll']))
+{
+    ////////////////////////////
+    //  REGISTER MENU ITEM
+
+    $moduleData = array('uid'       => 'proto-users',
+                        'name'      => 'Users',
+                        'adminUrl'  => 'admin/users/',
+                        'publicUrl' => 'users/');
+    \Model\Module::register($moduleData);
+}
