@@ -1,14 +1,35 @@
-{% extends 'core/block-module-pages/admin.core.twig' %}
+{% extends 'core/block-module-users/admin.core.twig' %}
 
 {% block panelHeading %}
 	<div class='panel-heading'>
-		<h4>Update Page</h4>
+		<h4>Update Wine</h4>
 	</div>
 {% endblock %}
 
 {% block panelBody %}
 	<div class='panel-body'>
-		Page form...
+		<form role="form" method="post">
+			<input type='hidden' name='action' value='save' />
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input type="text" class="form-control" name="firstName" placeholder="Enter first name" value="{{ user.firstName }}">
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input type="text" class="form-control" name="lastName" placeholder="Enter last name" value="{{ user.lastName }}">
+			</div>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" name="username" placeholder="Enter username" value="{{ user.username }}">
+			</div>
+			<div class="form-group">
+				<label for="password">Username</label>
+				<input type="text" class="form-control" name="password" placeholder="Enter password" value="{{ user.password }}">
+			</div>
+			{% block projectFields %}
+			{% endblock %}
+			<button type="save" class="btn btn-default">Save</button>
+		</form>
 	</div>
 {% endblock %}
 

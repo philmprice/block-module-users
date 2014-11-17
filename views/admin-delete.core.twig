@@ -1,14 +1,18 @@
-{% extends 'core/block-module-pages/admin.core.twig' %}
+{% extends 'core/block-module-users/admin.core.twig' %}
 
 {% block panelHeading %}
 	<div class='panel-heading'>
-		<h4>Delete Page</h4>
+		<h4>Delete User</h4>
 	</div>
 {% endblock %}
 
 {% block panelBody %}
 	<div class='panel-body'>
-		Page details...
+		<form role="form" method="post">
+			<input type='hidden' name='action' value='delete' />
+			<p>Are you sure you want to delete user '{{ user.firstName }} {{ user.lastName }}'?</p>
+			<button type="save" class="btn btn-default">Delete</button>
+		</form>
 	</div>
 {% endblock %}
 

@@ -1,0 +1,18 @@
+{% extends 'block-module-users/public.twig' %}
+
+{% block body %}
+	{% block header %}
+		<h4>Users</h4>
+	{% endblock %}
+	{% block table %}
+		<table class='table'>
+		{% for user in userArray %}
+			<tr>
+				<td>{{ user.firstName }} {{ user.lastName }}</td>
+				{% block projectTableData %}
+				{% endblock %}
+			</tr>
+		{% endfor %}
+		</table>
+	{% endblock %}
+{% endblock %}

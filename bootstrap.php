@@ -9,20 +9,59 @@ $blockNamespace		= $blockUpperHandle.'Module';
 ////////////////////////////
 //  ROUTES
 
+//  index
 $indexControllerData = array(
-    'controller'    => 'index',
+    'controller'    => 'admin',
     'action'        => 'index',
     'namespace'     => $blockNamespace.'\Controller'
 );
-$router->add("/users", 		$indexControllerData);
-$router->add("/users/", 	$indexControllerData);
-$router->add("/admin/", 	$indexControllerData);
+$router->add("/admin/".$blockHandle,                        $indexControllerData);
+$router->add("/admin/".$blockHandle."/",                    $indexControllerData);
+
+//  create
+$indexControllerData = array(
+    'controller'    => 'admin',
+    'action'        => 'create',
+    'namespace'     => $blockNamespace.'\Controller'
+);
+$router->add("/admin/".$blockHandle."/create",              $indexControllerData);
+$router->add("/admin/".$blockHandle."/create/",             $indexControllerData);
+
+//  update
+$indexControllerData = array(
+    'controller'    => 'admin',
+    'action'        => 'update',
+    'namespace'     => $blockNamespace.'\Controller'
+);
+$router->add("/admin/".$blockHandle."/update/{id}",         $indexControllerData);
+$router->add("/admin/".$blockHandle."/update/{id}/",        $indexControllerData);
+
+//  delete
+$indexControllerData = array(
+    'controller'    => 'admin',
+    'action'        => 'delete',
+    'namespace'     => $blockNamespace.'\Controller'
+);
+$router->add("/admin/".$blockHandle."/delete/{id}",         $indexControllerData);
+$router->add("/admin/".$blockHandle."/delete/{id}/",        $indexControllerData);
+
+// public website
+$indexControllerData = array(
+    'controller'    => 'public',
+    'action'        => 'index',
+    'namespace'     => $blockNamespace.'\Controller'
+);
+$router->add("/".$blockHandle,      $indexControllerData);
+$router->add("/".$blockHandle."/",  $indexControllerData);
 
 ////////////////////////////
 //  CLASSES
 
-$loaderClassArray[$blockNamespace.'\Controller\IndexControllerCore']	= ABS_ROOT.CORE_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/controllers/IndexControllerCore.php';
-$loaderClassArray[$blockNamespace.'\Controller\IndexController']		= ABS_ROOT.PROJ_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/controllers/IndexController.php';
+$loaderClassArray[$blockNamespace.'\Controller\AdminControllerCore']    = ABS_ROOT.CORE_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/controllers/AdminControllerCore.php';
+$loaderClassArray[$blockNamespace.'\Controller\AdminController']        = ABS_ROOT.PROJ_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/controllers/AdminController.php';
+
+$loaderClassArray[$blockNamespace.'\Controller\PublicControllerCore']   = ABS_ROOT.CORE_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/controllers/PublicControllerCore.php';
+$loaderClassArray[$blockNamespace.'\Controller\PublicController']       = ABS_ROOT.PROJ_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/controllers/PublicController.php';
 
 $loaderClassArray['Model\UserCore']										= ABS_ROOT.CORE_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/models/UserCore.php';
 $loaderClassArray['Model\User']											= ABS_ROOT.PROJ_FOLDER.'/'.$blockAuthor.'/'.$blockFolder.'/models/User.php';

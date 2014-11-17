@@ -1,8 +1,15 @@
-{% extends 'core/block-module-pages/admin.core.twig' %}
+{% extends 'core/block-module-users/admin.core.twig' %}
 
 {% block panelHeading %}
 	<div class='panel-heading'>
-		<h4>Pages</h4>
+		<div class='row'>
+			<div class='col-xs-6'>
+				<h4>Users</h4>
+			</div>
+			<div class='col-xs-6 right pad-top'>
+				<a href='create/'><span class="glyphicon glyphicon-plus"></span></a>
+			</div>
+		</div>
 	</div>
 {% endblock %}
 
@@ -10,19 +17,33 @@
 {% endblock %}
 
 {% block table %}
-	<table class='table'>
-		<tr>
-			<th>Name</td>
-			<th></td>
-		</tr>
-		{% for page in pageArray %}
+	<table class='table table-hover'>
+		<thead>
 			<tr>
-				<td>{{ page.title }}</td>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Username</th>
+				<th>Password</th>
+				{% block projectTableHead %}
+				{% endblock %}
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for user in userArray %}
+			<tr>
+				<td>{{ user.firstName }}</td>
+				<td>{{ user.lastName }}</td>
+				<td>{{ user.username }}</td>
+				<td>{{ user.password }}</td>
+				{% block projectTableData %}
+				{% endblock %}
 				<td width=55>
-					<a href='update/{{ page.handle }}'><span class="glyphicon glyphicon-pencil"></span></a>
-					<a href='delete/{{ page.handle }}'><span class="glyphicon glyphicon-trash"></span></a>
+					<a href='update/{{ user.id }}'><span class="glyphicon glyphicon-pencil"></span></a>
+					<a href='delete/{{ user.id }}'><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			</tr>
 		{% endfor %}
+		</tbody>
 	</table>
 {% endblock %}
